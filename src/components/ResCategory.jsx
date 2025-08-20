@@ -7,14 +7,10 @@ const ResCategory = ({ data, showItems, setshowIndex }) => {
 
   return (
     <div className="rescategory-accordian">
-      <div className="accordian-header">
-        <button className="accordian-title" onClick={handleClick}>
-          {data.title + " (" + data.itemCards.length + ")"}
-        </button>
-        <button className="accordian-icon" onClick={handleClick}>
-          ⬇️
-        </button>
-      </div>
+      <button className="accordian-button" onClick={handleClick}>
+        <span>{data.title + " (" + data.itemCards.length + ")"}</span>
+        <span className="accordian-arrow">⬇️</span>
+      </button>
       <div>{showItems && <ItemsList items={data.itemCards} />}</div>
     </div>
   );

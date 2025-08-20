@@ -183,27 +183,38 @@ a{
   text-align: left;
 
 }
-
-.rescategory-accordian{
+.rescategory-accordian {
   width: auto;
   text-align: center;
   margin: 20px;
-  box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, 
-  rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px,
-  rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, 
-  rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, 
-  rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, 
-  rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+  box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px,
+    rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px,
+    rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px,
+    rgba(42, 51, 70, 0.04) 0px 6px 6px -3px,
+    rgba(14, 63, 126, 0.04) 0px 12px 12px -6px,
+    rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
 }
-.accordian-header{
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+
+.accordian-header {
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   font-size: large;
   font-weight: bolder;
+}
+
+.accordian-title,
+.accordian-icon {
+  all: unset;
   cursor: pointer;
+  font-size: large;
+  font-weight: bolder;
+  text-align: left;
+}
+
+.accordian-title:hover,
+.accordian-icon:hover {
+  color: #ff6f00;
 }
 
 .resmenu-item {
@@ -211,7 +222,7 @@ a{
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 10px;
-  border-bottom: 1px solid #0d0d0d; 
+  border-bottom: 1px solid #0d0d0d;
 }
 
 .resmenu-itemleft {
@@ -232,7 +243,7 @@ a{
   padding-right: 10px;
   flex-shrink: 0;
   text-align: right;
-  position: relative; /* Important for absolute positioning of the button */
+  position: relative;
 }
 
 .resmenu-itemright > img {
@@ -244,11 +255,11 @@ a{
 
 .resmenu-itemright > button {
   position: absolute;
-  bottom: 10px; /* Adjust distance from bottom */
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
-  color: #ff6f00; /* Swiggy orange */
+  color: #ff6f00;
   font-weight: bold;
   border: 1px solid #ff6f00;
   padding: 5px 15px;
@@ -261,6 +272,7 @@ a{
   background-color: #ff6f00;
   color: white;
 }
+
 
 .contact-input{
   border: 1px solid black;

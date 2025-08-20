@@ -25,7 +25,7 @@ const ResMenu = () => {
     ) || [];
 
   if (!info || menu.length === 0 || categories.length === 0) {
-    return <p>Try another restaurant</p>;
+    return <h1>This restaurant is not serving at this moment, Please try another restaurant</h1>;
   }
 
   return (
@@ -55,3 +55,4 @@ const ResMenu = () => {
 };
 
 export default ResMenu;
+

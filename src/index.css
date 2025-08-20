@@ -195,26 +195,25 @@ a{
     rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
 }
 
-.accordian-header {
-  padding: 10px;
+.accordian-button {
+  all: unset;
   display: flex;
   justify-content: space-between;
-  font-size: large;
-  font-weight: bolder;
-}
-
-.accordian-title,
-.accordian-icon {
-  all: unset;
+  width: 100%;
   cursor: pointer;
   font-size: large;
   font-weight: bolder;
+  padding: 10px;
   text-align: left;
 }
 
-.accordian-title:hover,
-.accordian-icon:hover {
+.accordian-button:hover span,
+.accordian-button:hover .accordian-arrow {
   color: #ff6f00;
+}
+
+.accordian-arrow {
+  margin-left: 10px;
 }
 
 .resmenu-item {
@@ -272,6 +271,7 @@ a{
   background-color: #ff6f00;
   color: white;
 }
+
 
 
 .contact-input{

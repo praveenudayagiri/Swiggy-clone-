@@ -17,9 +17,12 @@ const ResMenu = () => {
   // Extracting safely
   const info = resMenuInfo[2]?.card?.card?.info;
   const menu= resMenuInfo[4].groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card?.itemCards;
-  const categories = resMenuInfo[4].groupedCard?.cardGroupMap?.REGULAR.cards.filter(
-    (c)=> c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+ const categories =
+    resMenuInfo?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ) || [];
 
 
   if (!info || menu.length===0) {
@@ -47,3 +50,4 @@ const ResMenu = () => {
 };
 
 export default ResMenu;
+

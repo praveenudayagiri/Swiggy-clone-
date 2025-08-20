@@ -5,88 +5,99 @@ import Shimmer from "./Shimmer";
 import { HOME_RESTAURANTS_API_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import withPromotedLabel from "./withPromotedLabel";
-const Body = () =>{
-    const [ ListOfRestaurant, setListOfRestaurant ] = useState([]);
-    const [filterdRestaurants, setfilteredRestaurants] = useState([]);
-    const[searchTxt,setsearchTxt] = useState("");
-    const ResCardPrmotoed=withPromotedLabel(ResCard);
 
-    useEffect(()=>{
-        FetchData();
-    },[]);
+const Body = () => {
+  const [ListOfRestaurant, setListOfRestaurant] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchTxt, setSearchTxt] = useState("");
+  const [loading, setLoading] = useState(true);
+  const ResCardPromoted = withPromotedLabel(ResCard);
 
-const FetchData = async()=>{
-        const data = await fetch(HOME_RESTAURANTS_API_URL);
-        const json = await data.json();
-        const dynamicData = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
-        /** Saving Data in Two Lists and manipulating second List eveytimw while rendering */
-        setListOfRestaurant(dynamicData);
-        setfilteredRestaurants(dynamicData);
-        
-    };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    const onlineStaus=useOnlineStatus();
-    if(!onlineStaus){
-        return(
-            <h2>Look like your are offline now</h2>
-        )
+  const fetchData = async () => {
+    try {
+      const data = await fetch(HOME_RESTAURANTS_API_URL);
+      const json = await data.json();
+      const dynamicData =
+        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
+      setListOfRestaurant(dynamicData);
+      setFilteredRestaurants(dynamicData);
+    } catch (err) {
+      console.error("Error fetching restaurants:", err);
+      setListOfRestaurant([]);
+      setFilteredRestaurants([]);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if(ListOfRestaurant.length===0){
-        return(
-            <Shimmer/>
-        )
-    }
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return <h2>Looks like you are offline</h2>;
+  }
 
-    return ListOfRestaurant.length===0 ?(
-        <Shimmer/>
-    ): (
-        <div className="body">
-            <div className="filter">
-                <input type="text" value={searchTxt} 
-                /*** Every time we type each letter searchTxt will be updated and whole component is re-rendered */
-                onChange={(e)=>{
-                    setsearchTxt(e.target.value);
-                }}  
-                />
-                <button className="search-btn"
-                /*** Rather than getting data from filterRestaurants we are getting filtered data from original data which we got from API */
-                    onClick={()=>{
-                        const filterdList = ListOfRestaurant.filter((res)=>{
-                            return res.info.name.toLowerCase().includes(searchTxt.toLowerCase());
-                        });
+  if (loading) {
+    return <Shimmer />;
+  }
 
-                  
-                        setfilteredRestaurants(filterdList);
-                    }}
-                >Search</button>
-            <button onClick={()=>{
-                const filterdList = ListOfRestaurant.filter((res)=>{
-                    return res.info.avgRating > 4
-                })
-                setfilteredRestaurants(filterdList);
-            }
-            
-            }>Top Rated Restaurant</button>
-            </div>
-            <div className="res-container">
-            {
-                filterdRestaurants.map((restaurant) => {
-                const isPromoted = restaurant.info.differentiatedUi?.displayType === "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT";
-                const Card = isPromoted ? ResCardPrmotoed : ResCard;
+  if (ListOfRestaurant.length === 0) {
+    return <p>Try another restaurant</p>;
+  }
 
-                return (
-                    <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}>
-                    <Card resData={restaurant} />
-                    </Link>
-                );
-                })
-            }
-            </div>
+  return (
+    <div className="body">
+      <div className="filter">
+        <input
+          type="text"
+          value={searchTxt}
+          onChange={(e) => setSearchTxt(e.target.value)}
+        />
+        <button
+          className="search-btn"
+          onClick={() => {
+            const filteredList = ListOfRestaurant.filter((res) =>
+              res.info.name.toLowerCase().includes(searchTxt.toLowerCase())
+            );
+            setFilteredRestaurants(filteredList);
+          }}
+        >
+          Search
+        </button>
+        <button
+          onClick={() => {
+            const filteredList = ListOfRestaurant.filter(
+              (res) => res.info.avgRating > 4
+            );
+            setFilteredRestaurants(filteredList);
+          }}
+        >
+          Top Rated Restaurant
+        </button>
+      </div>
 
-        </div>
-    )
+      <div className="res-container">
+        {filteredRestaurants.map((restaurant) => {
+          const isPromoted =
+            restaurant.info.differentiatedUi?.displayType ===
+            "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT";
+          const Card = isPromoted ? ResCardPromoted : ResCard;
+
+          return (
+            <Link
+              to={"/restaurants/" + restaurant.info.id}
+              key={restaurant.info.id}
+            >
+              <Card resData={restaurant} />
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
-
 
 export default Body;

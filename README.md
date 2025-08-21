@@ -23,7 +23,7 @@ It fetches real-time restaurant data, allows intuitive searching and filtering, 
 - 🔍 **Search & Filter** — Search restaurants and filter top-rated ones.  
 - 🛒 **Add to Cart** — Functional cart with quantity control.  
 - ♻ **Real-Time Cart Updates** — Automatic updates when items are added/removed.  
-- 📱 **Responsive Design** — Works seamlessly across devices.  
+ 
 
 ---
 

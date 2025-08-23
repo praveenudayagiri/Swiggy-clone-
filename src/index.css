@@ -185,15 +185,18 @@
   margin-right: 10px;
   width: 60px;
 }
-
-/* Search Input */
-.filter input {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  outline: none;
-  font-size: 14px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.filter {
+  margin: 20px auto;        /* space from header */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;  /* center align */
+  align-items: center;
+  gap: 12px;                /* spacing between input & buttons */
+  flex-wrap: wrap;          /* responsive for smaller screens */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: fit-content;
 }
 
 .filter input:focus {

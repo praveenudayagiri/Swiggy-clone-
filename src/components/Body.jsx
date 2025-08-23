@@ -45,7 +45,7 @@ const Body = () => {
   }
 
   if (ListOfRestaurant.length === 0) {
-    return <p>Try another restaurant</p>;
+    return <h1>No restaurants are serving at this time</h1>;
   }
 
   return (
@@ -101,3 +101,4 @@ const Body = () => {
 };
 
 export default Body;
+

@@ -3,25 +3,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 40px;
-  background: #ffffff;
-  border-bottom: 2px solid #f1f1f1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 8px 30px;   /* reduced height */
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 100;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Logo */
 .logo {
-  width: 120px;
+  width: 100px;   /* reduced */
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
-
 .logo:hover {
   transform: scale(1.05);
 }
@@ -30,22 +28,22 @@
 .nav-items {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
   margin: 0;
   padding: 0;
 }
 
 .nav-items li {
   list-style: none;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 /* Links */
 .nav-items li a {
   text-decoration: none;
-  color: #333;
-  padding: 6px 0;
+  color: #333;   /* ✅ visible on white bg */
+  padding: 5px 0;
   transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
@@ -56,12 +54,12 @@
 
 /* Login Button */
 .login-btn {
-  padding: 8px 16px;
+  padding: 6px 14px;
   background: #007bff;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
@@ -72,46 +70,6 @@
   transform: translateY(-2px);
 }
 
-.login-btn:active {
-  transform: translateY(1px);
-}
-
-/* Cart Highlight */
-.nav-items li:nth-child(5) {
-  position: relative;
-}
-
-.nav-items li:nth-child(5)::after {
-  content: "";
-  position: absolute;
-  top: -6px;
-  right: -12px;
-  width: 8px;
-  height: 8px;
-  background: red;
-  border-radius: 50%;
-  display: none;
-}
-
-/* Show red dot only if cart has items */
-.nav-items li:nth-child(5):has(a:contains("items"))::after {
-  display: block;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
-
-  .nav-items {
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 10px;
-  }
-}
 
 .res-container {
   margin: 20px;

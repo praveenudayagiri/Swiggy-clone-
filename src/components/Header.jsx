@@ -23,14 +23,11 @@ const Header = () =>{
                 <li> <Link to="/about">About </Link> </li>
                 <li> <Link to="/cart" >Cart-{cart.length+" items"}</Link></li>
                 <li><Link to="/contact"> Contact</Link></li>
-                <button className="login-btn" onClick={()=>{
-                    loginbtn=="login"? 
-                    setloginbtn("logout"):setloginbtn("login");
-                }}>{loginbtn}</button>
                 <li>{loggedinUser}</li>
             </ul>
         </div>
     )
 };
+
 
 export default Header;
